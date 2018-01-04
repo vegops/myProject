@@ -1,0 +1,36 @@
+{
+  "name": "project-2",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "express-session": "^1.15.6",
+    "express-sessions": "^1.0.6",
+    "jade": "~1.11.0",
+    "mongod": "^2.0.0",
+    "mongodb": "^3.0.1",
+    "mongodb-server": "^1.0.0",
+    "mongoose": "^4.13.7",
+    "morgan": "~1.9.0",
+    "mysql": "^2.15.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.4.0",
+    "serve-favicon": "~2.4.5",
+    "set-cookie": "0.0.4"
+  },
+  "main": "app.js",
+  "devDependencies": {
+    "nodemon": "^1.14.7"
+  },
+  "author": "Ethan Reubens <vops.dev@gmail.com>",
+  "license": "ISC",
+  "description": "first mongo project"
+}

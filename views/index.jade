@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  nav.nav-bar
+    a.nav-item.col-xs-3(href="/") Home
+      i.fa.fa-home(aria-hidden='true')
+    a.nav-item.col-xs-3(href="/account") My Account
+      i.fa.fa-user(aria-hidden='true')
+    a.nav-item.col-xs-3(href="/about") About
+      i.fa.fa-info(aria-hidden='true')
+    a.nav-item.col-xs-3(href="/contact") Contact us
+      i.fa.fa-phone(aria-hidden='true').
+  if(user)
+    h1.title Welcome #{user},
+    p here you can find information about yourself!
+  if(!user)
+    h1.title Welcome Stranger!
+    p 
+      | Please  
+      a(href="#" data-toggle="modal" data-target="#login-modal") login 
+      | to view your personal data!
+    #login-modal.modal.fade(role='dialog')
+      .modal-dialog
+        // Modal content
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal') &times;
+            |         
+            h4.modal-title Login
+          |       
+          .modal-body
+            h4 Please log in with you username and password.
+            form#login-form.col-xs-6(action="/account")
+              .field
+                label(for="username") Username:
+                input#username(type="text" name="username")
+              .field
+                label(for="password") Password:
+                input#password(type="password" name="password")
+              .field
+                input#submit(type="submit" value="Login")
+            .login-img.col-xs-3
+              img(src="https://www.sharphealthplanpayment.com/SHARPHEALTHPLAN/images/images/login.svg")
+          |       
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+
+  footer.footer All rights reserved &copy; to 
+    a(href="mailto:vops.dev@gmail.com") Eithan Reubens
+

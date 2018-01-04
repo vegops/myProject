@@ -1,0 +1,71 @@
+extends layout
+
+block content
+  nav.nav-bar
+    a.nav-item.col-xs-3(href="/") Home
+      i.fa.fa-home(aria-hidden='true')
+    a.nav-item.col-xs-3(href="/account") My Account
+      i.fa.fa-user(aria-hidden='true')
+    a.nav-item.col-xs-3(href="/about") About
+      i.fa.fa-info(aria-hidden='true')
+    a.nav-item.col-xs-3(href="/contact") Contact us
+      i.fa.fa-phone(aria-hidden='true')
+    if(user)
+      a.logout(href="/user/logout") Logout
+  h1 Account Dashboard
+  if(user)
+    h3.title Welcome #{user.username},
+    p here you can find information about yourself!
+    p your account number is: #{user.account}.
+  if(!user)
+    h3.title Welcome Stranger!
+    p 
+      | you better 
+      a(href="#" data-toggle="modal" data-target="#login-modal") login 
+      | ASAP!
+    #login-modal.modal.fade(role='dialog')
+      .modal-dialog
+        // Modal content
+        .modal-content(ng-controller="loginController")
+          .modal-header
+            button.close(type='button', data-dismiss='modal') &times;
+            |         
+            h4.modal-title.active.col-xs-6 
+              a(ng-click="switch()") Login
+            h4.modal-title.col-xs-6 
+              a(ng-click="switch()") Register
+          |       
+          .modal-body(ng-show="login")
+            h4 Please log in with you username and password.
+            form#login-form.col-xs-6(action="/user/exist" method="POST")
+              .field
+                label(for="username") Username:
+                input#lusername(type="text" name="username")
+              .field
+                label(for="password") Password:
+                input#lpassword(type="password" name="password")
+              .field
+                input#lsubmit(type="submit" value="Login")
+            .login-img.col-xs-3
+              img(src="https://www.sharphealthplanpayment.com/SHARPHEALTHPLAN/images/images/login.svg")
+          .modal-body(ng-hide="login")
+            h4 Register a new user here:
+            form#registration-form.col-xs-6(action="/user/new" method="POST")
+              .field
+                label(for="username") Username:
+                input#rusername(type="text" name="username" ng-model="yourName")
+              .field
+                label(for="password") Password:
+                input#rpassword(type="password" name="password")
+              .field
+                input#rsubmit(type="submit" value="Register")
+            .login-img.col-xs-3
+              img(src="https://d30y9cdsu7xlg0.cloudfront.net/png/40798-200.png")
+              .username {{yourName}}
+          |       
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+
+  footer.footer All rights reserved &copy; to 
+    a(href="mailto:vops.dev@gmail.com") Eithan Reubens
+
