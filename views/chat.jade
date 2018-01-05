@@ -1,0 +1,10 @@
+.chat-box(ng-controller="chatController")
+    i.fa.fa-arrow-circle-down.chat-toggle(aria-hidden='true' ng-click="chatToggle()")
+    h4 {{chatName}} Chat
+    .name
+        input#chat-name(type="text" placeholder="type your chat name..." ng-model="chatName")
+        i.fa.fa-floppy-o.save-name(aria-hidden='true' ng-click="connect()")
+    .chat-msgs
+    .chat-input
+        input#chat-message(type="text" placeholder="type your message..." ng-model="chatMsg")
+        i.fa.fa-paper-plane#send-msg(aria-hidden='true' ng-click="sendMsg(e)")
