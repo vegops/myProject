@@ -138,6 +138,9 @@ div.modal-footer {
   transform: translateY(230px);
   box-shadow: none;
 }
+.chat-box.hidden {
+  display: none;
+}
 .chat-box.alert {
   box-shadow: 0 -2px 40px 5px yellow;
 }
@@ -170,6 +173,11 @@ div.modal-footer {
 }
 .chat-box #chat-name.must {
   box-shadow: 0 0 3px 2px red;
+}
+.chat-box #chat-name.saved {
+  filter: contrast(60%);
+  padding: 0;
+  background: lightgreen;
 }
 .chat-box .save-name, .chat-box #send-msg {
   margin: 2px;

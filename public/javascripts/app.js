@@ -10,6 +10,7 @@ myApp.controller('loginController',$scope=>{
 
 myApp.controller('chatController', $scope=>{
     var ws;
+    var online = [];
     $scope.connect = function() {
         $scope.chatName = $('#chat-name').val();
         if( $scope.chatName ==="" ){
@@ -19,10 +20,17 @@ myApp.controller('chatController', $scope=>{
                     $(this).removeClass('must');
                 })
             }
+        } else if ($('#chat-name').hasClass('saved')) {
+            console.log('user want to edit name');
+            $('#chat-name').toggleClass('must');
+            setTimeout(() => {
+                $('#chat-name').toggleClass('must');
+            }, 300);
         } else {
             ws = new WebSocket('ws://localhost:3000');
             ws.onopen = function() {
                 console.log($scope.chatName+' is connected!');
+                $('#chat-name').addClass('saved').attr('disabled','disabled');
             };
             ws.onmessage = function(message) {
                 console.log("message:"+message.data);
@@ -63,4 +71,7 @@ myApp.controller('chatController', $scope=>{
         $('.chat-box').toggleClass('closed');
         $('.chat-box .chat-toggle').toggleClass('close');
     }
+    setTimeout(() => {
+        $('.chat-box').fadeIn('slow').removeClass('hidden');
+    }, 500);
 })

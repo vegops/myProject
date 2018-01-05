@@ -34,6 +34,7 @@ server.on('listening', onListening);
 //websocket
 let activeConnections = [];
 wss.on('connection', function(ws, req) {
+  ws.send('You are connected')
   activeConnections.push(ws);
   ws.on('message', message=>{
     activeConnections.forEach(con => {
@@ -41,11 +42,13 @@ wss.on('connection', function(ws, req) {
     });
   });
   ws.on('close', function(){
-    var index = indexOf(ws, activeConnections);
+    var index = activeConnections.indexOf(ws);
     activeConnections.splice(index, 1)
     console.log('ws closed');
   })
-  // ws.on('error', )
+  ws.on('error', error=>{
+    console.log(error);
+  });
 });
 
 /**
