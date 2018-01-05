@@ -23,7 +23,10 @@ router.post('/new', addNewUser, function(req, res, next) {
 
 router.post('/exist', authUser, function(req, res, next) {
   User.findOne({ username: req.body.username }, function (err, user) {
-    if (err) { return done(err); }
+    if (err) { 
+      console.log("error:"+ err);
+      return done(err); 
+    }
     if (!user) {
       return done(null, false, { message: 'Incorrect username.' });
     }
@@ -36,9 +39,7 @@ router.post('/exist', authUser, function(req, res, next) {
         path: '/',
         maxAge: 60 * 60 * 24 * 7 // 1 week 
       }));
-      res.render('account',{
-        user: req.user,
-      });
+      res.redirect('/account');
       return user;
     });
 })
@@ -50,7 +51,7 @@ router.get('/logout', (req, res, next)=>{
   res.setHeader('Set-Cookie', cookie.serialize('userData', "deleted", {
     httpOnly: true,
     path: '/',
-    maxAge: 1
+    maxAge: 0
   }));
   res.redirect('/');
 })

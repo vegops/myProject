@@ -40,6 +40,7 @@ a {
   padding: 5px;
   background: black;
   color: white;
+  z-index: 2;
 }
 .modal-body {
   height: 230px;
@@ -113,8 +114,78 @@ div.modal-footer {
 .login-img .username {
   text-align: center;
 }
-.logout {
+.side {
   position: fixed;
   top: 50px;
   right: 15px;
+}
+.chat-box {
+  position: fixed;
+  width: 200px;
+  height: 250px;
+  bottom: 30px;
+  right: 20px;
+  background: lightcyan;
+  border: 2px solid lightgray;
+  border-bottom: none;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 0 5px;
+  box-shadow: 0 -2px 20px 0px #888;
+  transition: 400ms ease-in-out;
+}
+.chat-box.closed {
+  transform: translateY(230px);
+  box-shadow: none;
+}
+.chat-box.alert {
+  box-shadow: 0 -2px 40px 5px yellow;
+}
+.chat-box .chat-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 5px;
+  cursor: pointer;
+  transition: 400ms ease;
+}
+.chat-box .chat-toggle.close {
+  transform: rotate(180deg);
+  margin-top: 2px;
+}
+.chat-box h4 {
+  margin: 0;
+  text-align: center;
+}
+.chat-box input {
+  width: 160px;
+  transition: 200ms ease;
+}
+.chat-box #chat-message.flip {
+  transform: rotateX(360deg);
+}
+.chat-box .chat-input {
+  position: absolute;
+  bottom: 5px;
+}
+.chat-box #chat-name.must {
+  box-shadow: 0 0 3px 2px red;
+}
+.chat-box .save-name, .chat-box #send-msg {
+  margin: 2px;
+  padding: 5px;
+  background: lightgray;
+  cursor: pointer;
+  transition: 300ms ease;
+}
+.chat-box .save-name.connected {
+  background: lightgreen;
+}
+.chat-box .save-name:hover, .chat-box #send-msg:hover {
+  background: lightskyblue;
+}
+.chat-box .chat-msgs {
+  height: 150px;
+  margin: 5px 0;
+  background: white;
 }

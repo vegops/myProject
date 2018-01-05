@@ -10,6 +10,10 @@ block content
       i.fa.fa-info(aria-hidden='true')
     a.nav-item.col-xs-3(href="/contact") Contact us
       i.fa.fa-phone(aria-hidden='true')
+    if(user)
+      a.side(href="/user/logout") Logout
+    if(!user)
+      a.side(href="/account") Login
   h1= title
   p let's do some testing...
   footer.footer All rights reserved &copy; to 

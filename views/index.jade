@@ -10,15 +10,17 @@ block content
       i.fa.fa-info(aria-hidden='true')
     a.nav-item.col-xs-3(href="/contact") Contact us
       i.fa.fa-phone(aria-hidden='true').
+    if(user)
+      a.side(href="/user/logout") Logout
   if(user)
-    h1.title Welcome #{user},
-    p here you can find information about yourself!
+    h1.title(style="text-align: center;") Welcome #{user.username}!
+    p(style="text-align: center;") this is your own personal space!
+    .welcome-img(style="text-align: center;")
+      img(src="https://d3n8a8pro7vhmx.cloudfront.net/promise/pages/1972/attachments/original/1479619064/StartWithHello_logo.jpg")
   if(!user)
     h1.title Welcome Stranger!
-    p 
-      | Please  
-      a(href="#" data-toggle="modal" data-target="#login-modal") login 
-      | to view your personal data!
+    .welcome-img
+      img(src="http://i.ebayimg.com/00/s/NTY2WDg0OA==/z/ZeoAAOSw-zxWpf59/$_32.JPG")
     #login-modal.modal.fade(role='dialog')
       .modal-dialog
         // Modal content
@@ -44,6 +46,7 @@ block content
           |       
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
+    a.side(href="#" data-toggle="modal" data-target="#login-modal") Login
 
   footer.footer All rights reserved &copy; to 
     a(href="mailto:vops.dev@gmail.com") Eithan Reubens

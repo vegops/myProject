@@ -11,7 +11,7 @@ block content
     a.nav-item.col-xs-3(href="/contact") Contact us
       i.fa.fa-phone(aria-hidden='true')
     if(user)
-      a.logout(href="/user/logout") Logout
+      a.side(href="/user/logout") Logout
   h1 Account Dashboard
   if(user)
     h3.title Welcome #{user.username},

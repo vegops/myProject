@@ -1,3 +1,4 @@
+const http = require('http');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -8,18 +9,36 @@ const mongoose = require('./db/connection');
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const session = require('express-session');
-
-var index = require('./routes/index');
-var users = require('./routes/users');
-var account = require('./routes/account');
-var about = require('./routes/about');
-var contact = require('./routes/contact');
+const WebSocket = require('ws');
 
 // app models
 var User = require('./models/User');
 var Account = require('./models/Account');
 
 var app = express();
+
+//app routes
+var index = require('./routes/index');
+var users = require('./routes/users');
+var account = require('./routes/account');
+var about = require('./routes/about');
+var contact = require('./routes/contact');
+
+// websocket
+// const server = http.createServer(app);
+// const wss = new WebSocket.Server({ server });
+
+// wss.on('connection', function connection(ws, req) { 
+//   ws.on('message', function incoming(message) {
+//     console.log('received: %s', message);
+//   });
+ 
+//   ws.send('something');
+// });
+ 
+// server.listen(8080, function listening() {
+//   console.log('Listening on %d', server.address().port);
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
