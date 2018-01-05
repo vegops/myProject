@@ -34,7 +34,8 @@ server.on('listening', onListening);
 //websocket
 let activeConnections = [];
 wss.on('connection', function(ws, req) {
-  ws.send('You are connected')
+  ws.send('You are connected');
+  // console.log(ws._ultron.id);
   activeConnections.push(ws);
   ws.on('message', message=>{
     activeConnections.forEach(con => {

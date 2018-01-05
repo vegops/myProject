@@ -23,15 +23,18 @@ router.post('/new', addNewUser, function(req, res, next) {
 
 router.post('/exist', authUser, function(req, res, next) {
   User.findOne({ username: req.body.username }, function (err, user) {
+    if(user === null ) {
+      res.render('error',{ err: 'Unknown error!' } );
+    };
     if (err) { 
-      console.log("error:"+ err);
-      return done(err); 
+      res.render('error:', { err });
+      return (err); 
     }
     if (!user) {
-      return done(null, false, { message: 'Incorrect username.' });
+      res.render('error',{ err: 'Incorrect username' } );
     }
     if (!user.validPassword(req.body.password)) {
-      return done(null, false, { message: 'Incorrect password.' });
+      res.render('error',{ err: 'Incorrect password' } );
     }
     user.password = undefined;
       res.setHeader('Set-Cookie', cookie.serialize('userData', JSON.stringify(user), {

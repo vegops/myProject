@@ -6,5 +6,7 @@
         i.fa.fa-floppy-o.save-name(aria-hidden='true' ng-click="connect()")
     .chat-msgs
     .chat-input
-        input#chat-message(type="text" placeholder="type your message..." ng-model="chatMsg")
-        i.fa.fa-paper-plane#send-msg(aria-hidden='true' ng-click="sendMsg(e)")
+        form(ng-submit="sendMsg(e)")
+            input#chat-message(type="text" placeholder="type your message..." ng-model="chatMsg")
+            i.fa.fa-paper-plane#send-msg(aria-hidden='true' ng-click="sendMsg(e)")
+            input(type="submit" style="display: none;")

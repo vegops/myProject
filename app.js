@@ -24,28 +24,12 @@ var account = require('./routes/account');
 var about = require('./routes/about');
 var contact = require('./routes/contact');
 
-// websocket
-// const server = http.createServer(app);
-// const wss = new WebSocket.Server({ server });
-
-// wss.on('connection', function connection(ws, req) { 
-//   ws.on('message', function incoming(message) {
-//     console.log('received: %s', message);
-//   });
- 
-//   ws.send('something');
-// });
- 
-// server.listen(8080, function listening() {
-//   console.log('Listening on %d', server.address().port);
-// });
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
